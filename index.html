@@ -187,7 +187,7 @@ async function showCsv(L,c){const b=$('send');b.disabled=true;b.textContent='Env
   }catch(e){alert('Falha de conexão. Tente novamente.');b.disabled=false;b.textContent='Enviar pedido'}}
 async function load(){$('grid').innerHTML='<p style="color:var(--mute)">Carregando catálogo...</p>';
   try{const r=await fetch(API+'?acao=catalogo');const j=await r.json();
-    D=j.items.map(p=>({...p,photo:'fotos/'+encodeURIComponent(p.id)+'.jpg'}));chips();grid();bar();}
+    D=j.items.map(p=>({...p,photo:encodeURIComponent(p.id)+'.jpg'}));chips();grid();bar();}
   catch(e){$('grid').innerHTML='<p>Não foi possível carregar o catálogo agora. Atualize a página em alguns instantes.</p>'}}
 load();
 </script>
